@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.line-h-36 {
+  line-height: 36px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollHide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollHide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+nav > .active {
+  background: linear-gradient();
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #054f8d, #74ebbd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
