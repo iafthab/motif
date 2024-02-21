@@ -1,33 +1,28 @@
-import { fetchData } from "@/lib/discover";
-import Image from "next/image";
+import { fetchData } from "@/lib/fetchData";
 import React from "react";
+import Header from "../components/Header";
+import CelebOverview from "../components/CelebOverview";
 
 const PeoplePage = async () => {
-  const data: fetchedData = await fetchData(
+  const data: FetchedPeopleData = await fetchData(
     "person/popular?language=en-US&page=1"
   );
   return (
-    <main className="p-4">
-      <h2 className="font-bold text-4xl text-white py-4">Popular Celebs</h2>
-      <section className="grid grid-cols-6 gap-4">
-        {data.results.map((celeb, index) => (
-          <div
-            key={index}
-            className="h-[250px] w-[167px] flex flex-col relative rounded-md"
-          >
-            <Image
-              src={`${process.env.IMG_URI}${celeb.profile_path}`}
-              fill={true}
-              className="rounded-md"
-              //   width={100}
-              //   height={50}
-              alt={celeb?.name}
+    <main className="bg-gradient-to-r from-[#080500] to-[#7b5000] w-full overflow-auto h-screen text-slate-300">
+      <Header />
+      <section className="px-4">
+        <h2 className="font-bold text-4xl text-white py-4">Popular Celebs</h2>
+        <section className="grid grid-cols-6 gap-y-8 p-4 justify-center">
+          {data.results.map((celeb, index) => (
+            <CelebOverview
+              celeb={celeb}
+              key={index}
+              playing={false}
+              ranking={index + 1}
+              optionalClasses="first:row-span-2 first:col-span-2 first:w-[350px] first:h-full first:text-[10rem]"
             />
-            <div className="w-full absolute rounded-b-md bg-gradient-to-b from-slate-800/50 text-white to-slate-950 bottom-0 left-0 p-2">
-              <h3 className="font-semibold text-md">{celeb.name}</h3>
-            </div>
-          </div>
-        ))}
+          ))}
+        </section>
       </section>
     </main>
   );

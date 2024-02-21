@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { primaryFont } from "@/lib/fonts";
-import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 
 export const metadata: Metadata = {
@@ -17,13 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${primaryFont.className}  bg-gradient-to-b from-[#1f262d] to-[#14181c] w-screen h-screen flex`}
+        className={`${primaryFont.className} bg-white flex w-screen h-screen`}
       >
         <NavBar />
-        <main className="w-full overflow-auto h-screen text-slate-300">
-          <Header />
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

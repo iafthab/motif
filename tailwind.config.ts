@@ -9,16 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blue1: "#0779d9",
-        blue2: "#0664b3",
-        blue3: "#054f8d",
-        blue4: "#043a67",
-        blue5: "#032541",
-        green1: "#bcfdce",
-        green2: "#9af4c6",
-        green3: "#74ebbd",
-        green4: "#1aa381",
-        green5: "#1aa381",
+        gold: "#fda505",
+        accentHome: "#0020b1",
+        accentMovies: "#7c01be",
+        accentSeries: "#085f01",
+        accentPeople: "#f8931d",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
