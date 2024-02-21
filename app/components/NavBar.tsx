@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 const NavBar = () => {
   const pathname = usePathname();
   return (
-    <div className=" text-slate-300 h-screen bg-black flex flex-col w-[15%]">
+    <div className=" text-white h-screen bg-black flex flex-col w-[15%]">
       <Link href={"/"} className="mx-auto">
         <h1
           className={`font-black text-gold tracking-wide py-4 mx-auto text-[40px] hover:drop-shadow-[1.5px_1.5px_0.5px_#fff] duration-300`}
@@ -114,7 +114,7 @@ const NavBar = () => {
         <div className="flex flex-col gap-1">
           <Link
             className={`py-4 ${
-              pathname.startsWith("/settings") ? "active font-semibold" : ""
+              pathname.startsWith("/settings") ? "bg-gold font-semibold" : ""
             } px-5 gap-2 duration-100 flex items-center rounded-l-full hover:font-semibold`}
             href={"/settings"}
           >
@@ -130,7 +130,7 @@ const NavBar = () => {
           </Link>
           <Link
             className={`py-4 ${
-              pathname.startsWith("/about") ? "active font-semibold" : ""
+              pathname.startsWith("/about") ? "bg-gold font-semibold" : ""
             } px-5 gap-2 duration-100 flex items-center rounded-l-full hover:font-semibold`}
             href={"/about"}
           >
@@ -150,7 +150,7 @@ const NavBar = () => {
           </Link>
           <Link
             className={`py-4 ${
-              pathname.startsWith("/account") ? "active font-semibold" : ""
+              pathname.startsWith("/account") ? "bg-gold font-semibold" : ""
             } px-5 gap-2 duration-100 flex items-center rounded-l-full hover:font-semibold`}
             href={"/"}
           >

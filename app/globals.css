@@ -17,10 +17,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-.active {
-  background-color: #0020b1;
-}
-
 .text-gradient {
   background: linear-gradient(to right bottom, #ffb121, #af7201);
   background-clip: text;
@@ -39,15 +35,3 @@
 .bgSeries {
   background-color: #ff8800;
 }
-
-/* .border-Home {
-  border-color: #1425a5;
-}
-
-.border-Movies {
-  border-color: #65039c;
-}
-
-.border-Series {
-  border-color: #217d5e;
-} */

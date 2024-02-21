@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 type Props = {
   celeb: PeopleOverview;
-  playing?: boolean;
-  job?: boolean;
   ranking?: number;
   optionalClasses?: string;
+
+  job?: string;
+  playing?: string;
 };
 
 const CelebOverview = ({
@@ -65,12 +66,12 @@ const CelebOverview = ({
         </h3>
         {playing && (
           <p className="text-[13px] truncate align-top">
-            as {celeb?.character || celeb?.roles[0]?.character || "Unknown"}
+            as {playing ? playing : "Unknown"}
           </p>
         )}
         {job && (
           <p className="text-[13px] truncate align-top">
-            {celeb?.job || celeb.jobs[0].job || "Unknown"}
+            as {job ? job : "Unknown"}
           </p>
         )}
       </div>

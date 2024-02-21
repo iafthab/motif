@@ -35,7 +35,7 @@ const MovieDetails = async ({ params }: { params: { movieId: string } }) => {
       <Header />
       <section>
         <section className="p-3 select-none gap-3 grid grid-cols-3 w-full grid-rows-3">
-          <div className="p-4 rounded-3xl bg-sky-950/50 border-2 border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 row-start-1 row-end-4 flex items-center overflow-hidden">
+          <div className="p-4 rounded-3xl bg-sky-950/50 border-[1.25px] border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 row-start-1 row-end-4 flex items-center overflow-hidden">
             <Image
               className="hover:scale-110 duration-500"
               src={`${process.env.IMG_URI}${movie.poster_path}`}
@@ -62,7 +62,7 @@ const MovieDetails = async ({ params }: { params: { movieId: string } }) => {
                 {movie.vote_average.toPrecision(2)}
               </p>
             </div>
-            <div className="p-4 w-full h-full text-[15px] rounded-3xl bg-sky-950/50 border-2 border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 row-start flex flex-col justify-center">
+            <div className="p-4 w-full h-full text-[15px] rounded-3xl bg-sky-950/50 border-[1.25px] border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 row-start flex flex-col justify-center">
               Status:
               <p
                 className={`${
@@ -80,7 +80,7 @@ const MovieDetails = async ({ params }: { params: { movieId: string } }) => {
                 </>
               )}
             </div>
-            <div className="p-4 w-full h-full flex items-center justify-center flex-col rounded-3xl bg-sky-950/50 border-2 border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 col-start-1 col-end-3">
+            <div className="p-4 w-full h-full flex items-center justify-center flex-col rounded-3xl bg-sky-950/50 border-[1.25px] border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 col-start-1 col-end-3">
               Genres:
               {movie.genres.slice(0, 2).map((genre) => (
                 <p className="text-4xl font-bold" key={genre.id}>
@@ -89,7 +89,7 @@ const MovieDetails = async ({ params }: { params: { movieId: string } }) => {
               ))}
             </div>
           </section>
-          <div className="p-4 w-full h-full row-start-2 row-end-4 col-start-2 col-end-3 rounded-3xl bg-sky-950/50 border-2 border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 flex flex-col justify-evenly text-center items-center">
+          <div className="p-4 w-full h-full row-start-2 row-end-4 col-start-2 col-end-3 rounded-3xl bg-sky-950/50 border-[1.25px] border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 flex flex-col justify-evenly text-center items-center">
             <div>
               Directed By:
               {directors.length ? (
@@ -144,22 +144,26 @@ const MovieDetails = async ({ params }: { params: { movieId: string } }) => {
           </div>
         </section>
         <section
-          className={`bg-sky-950/50 border-2 border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 flex mx-3 mb-3 justify-start gap-4 items-center p-4 rounded-3xl`}
+          className={`bg-sky-950/50 border-[1.25px] border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 flex mx-3 mb-3 justify-start gap-4 items-center p-4 rounded-3xl`}
         >
           <h3 className="text-4xl font-semibold mb-4">Cast:</h3>
           <div className="flex justify-around w-full">
-            {credits.cast.slice(0, 6).map((cast) => (
-              <CelebOverview key={credits.id} celeb={cast} playing={true} />
+            {credits.cast.slice(0, 6).map((member) => (
+              <CelebOverview
+                key={credits.id}
+                celeb={member}
+                playing={member.character}
+              />
             ))}
           </div>
         </section>
         <section
-          className={`bg-sky-950/50 border-2 border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 flex mx-3 mb-3 justify-start gap-4 items-center p-4 rounded-3xl`}
+          className={`bg-sky-950/50 border-[1.25px] border-sky-600 hover:bg-sky-950/30 duration-200 hover:border-sky-500 flex mx-3 mb-3 justify-start gap-4 items-center p-4 rounded-3xl`}
         >
           <h3 className="text-4xl font-semibold mb-4">Crew:</h3>
           <div className="flex justify-around w-full">
-            {credits.crew.slice(0, 6).map((cast) => (
-              <CelebOverview key={credits.id} celeb={cast} job={true} />
+            {credits.crew.slice(0, 6).map((member) => (
+              <CelebOverview key={credits.id} celeb={member} job={member.job} />
             ))}
           </div>
         </section>

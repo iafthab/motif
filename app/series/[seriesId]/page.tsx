@@ -118,8 +118,12 @@ const SeriesDetails = async ({ params }: { params: { seriesId: string } }) => {
           >
             <h3 className="text-4xl font-semibold mb-4">Cast:</h3>
             <div className="flex justify-around w-full">
-              {credits.cast.slice(0, 6).map((cast) => (
-                <CelebOverview key={cast.id} celeb={cast} playing={true} />
+              {credits.cast.slice(0, 6).map((member) => (
+                <CelebOverview
+                  key={member.id}
+                  celeb={member}
+                  playing={member.roles[0].character}
+                />
               ))}
             </div>
           </section>
@@ -131,8 +135,12 @@ const SeriesDetails = async ({ params }: { params: { seriesId: string } }) => {
         >
           <h3 className="text-4xl font-semibold mb-4">Crew:</h3>
           <div className="flex justify-around w-full">
-            {credits.crew.slice(0, 6).map((cast) => (
-              <CelebOverview key={credits.id} celeb={cast} job={true} />
+            {credits.crew.slice(0, 6).map((member) => (
+              <CelebOverview
+                key={credits.id}
+                celeb={member}
+                job={member.jobs[0].job}
+              />
             ))}
           </div>
         </section>

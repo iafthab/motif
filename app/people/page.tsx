@@ -17,7 +17,6 @@ const PeoplePage = async () => {
             <CelebOverview
               celeb={celeb}
               key={index}
-              playing={false}
               ranking={index + 1}
               optionalClasses="first:row-span-2 first:col-span-2 first:w-[350px] first:h-full first:text-[10rem]"
             />

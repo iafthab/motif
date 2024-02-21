@@ -35,6 +35,7 @@ type PeopleOverview = {
   original_name: string;
   popularity: number;
   profile_path: string;
+  department?: string;
   known_for?: [MovieDetails | SeriesDetails];
 };
 
@@ -91,7 +92,7 @@ interface SeriesDetails extends MovieOverview {
     gender: number;
     profile_path: string | null;
   }>;
-  episode_run_time: number | number[];
+  episode_run_time: number[];
   first_air_date: string;
   genres: Array<{ id: number; name: string }>;
   homepage: string;
@@ -157,24 +158,20 @@ type FetchedPeopleData = {
   total_pages: number;
   total_results: number;
 };
-type Crew = {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: string;
-  department: string;
-};
 
-interface MovieCrew extends Crew {
+interface MovieCrew extends PeopleOverview {
   credit_id: string;
   job: string;
 }
 
-interface SeriesCrew extends Crew {
+interface MovieCast extends PeopleOverview {
+  cast_id?: number;
+  character?: string;
+  credit_id: string;
+  order?: number;
+}
+
+interface SeriesCrew extends PeopleOverview {
   jobs: [
     {
       credit_id: string;
@@ -187,41 +184,22 @@ interface SeriesCrew extends Crew {
 
 type MovieCredits = {
   id: number;
-  cast: Array<{
-    adult: boolean;
-    gender: number;
-    id: number;
-    known_for_department: string;
-    name: string;
-    original_name: string;
-    popularity: number;
-    profile_path: string;
-    cast_id?: number;
-    character?: string;
-    credit_id: string;
-    order?: number;
-  }>;
+  cast: Array<MovieCast>;
   crew: Array<MovieCrew>;
 };
 
 type SeriesCredits = {
   id: number;
-  cast: Array<{
-    adult: boolean;
-    gender: number;
-    id: number;
-    known_for_department: string;
-    name: string;
-    original_name: string;
-    popularity: number;
-    profile_path: string;
-    roles: Array<{
-      credit_id: string;
-      character: string;
-      episode_count: number;
-    }>;
-    total_episode_count: number;
-    order: number;
-  }>;
+  cast: Array<
+    PeopleOverview & {
+      roles: Array<{
+        credit_id: string;
+        character: string;
+        episode_count: number;
+      }>;
+      total_episode_count: number;
+      order: number;
+    }
+  >;
   crew: Array<SeriesCrew>;
 };
